@@ -64,7 +64,7 @@ public class TempController {
 
     @ApiOperation(value = "删除数据")
     @DeleteMapping("{id}")
-    public JsonBean delete(@RequestParam("id") Long id){
+    public JsonBean delete(@PathVariable("id") Long id){
         try {
             return tempService.delete(id);
         } catch (Exception e) {

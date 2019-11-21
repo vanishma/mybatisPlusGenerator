@@ -73,7 +73,7 @@ import ${superControllerClassPackage};
 
     @ApiOperation(value = "删除数据")
     @DeleteMapping("{id}")
-    public JsonBean delete(@RequestParam("id") Long id){
+    public JsonBean delete(@PathVariable("id") Long id){
         try {
             return ${(table.serviceName?substring(1))?uncap_first}.delete(id);
         } catch (Exception e) {
