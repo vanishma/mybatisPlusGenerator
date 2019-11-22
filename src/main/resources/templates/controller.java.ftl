@@ -92,7 +92,7 @@ import ${superControllerClassPackage};
         }
     }
 
-    @ApiOperation(value = "查询分页数据")
+    @ApiOperation(value = "id查询数据")
     @GetMapping("{id}")
     public JsonBean findById(@PathVariable Long id){
         try {
