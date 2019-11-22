@@ -42,23 +42,6 @@ import ${superControllerClassPackage};
     @Resource
     private ${table.serviceName} ${(table.serviceName?substring(1))?uncap_first};
 
-    @ApiOperation(value = "查询分页数据")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", value = "项目id"),
-        @ApiImplicitParam(name = "page", value = "页码"),
-        @ApiImplicitParam(name = "pageCount", value = "每页条数")
-    })
-    @GetMapping("{projectId}")
-    public JsonBean findListByPage(@PathVariable Long projectId,
-                                   @RequestParam Integer page,
-                                   @RequestParam Integer pageCount){
-        try {
-            return ${(table.serviceName?substring(1))?uncap_first}.findListByPage(projectId, page, pageCount);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            return JsonBean.returnResponse(false, ResultCode.SERVICE_ERR);
-        }
-    }
 
     @ApiOperation(value = "新增数据")
     @PostMapping()
@@ -92,5 +75,33 @@ import ${superControllerClassPackage};
             return JsonBean.returnResponse(false, ResultCode.SERVICE_ERR);
         }
     }
+
+    @ApiOperation(value = "查询分页数据")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "page", value = "页码"),
+        @ApiImplicitParam(name = "pageCount", value = "每页条数")
+    })
+    @GetMapping()
+    public JsonBean findListByPage(@RequestParam Integer page,
+                                   @RequestParam Integer pageCount){
+        try {
+            return ${(table.serviceName?substring(1))?uncap_first}.findListByPage(page, pageCount);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return JsonBean.returnResponse(false, ResultCode.SERVICE_ERR);
+        }
+    }
+
+    @ApiOperation(value = "查询分页数据")
+    @GetMapping("{id}")
+    public JsonBean findById(@PathVariable Long id){
+        try {
+            return ${(table.serviceName?substring(1))?uncap_first}.findById(id);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return JsonBean.returnResponse(false, ResultCode.SERVICE_ERR);
+        }
+    }
+
 }
 </#if>

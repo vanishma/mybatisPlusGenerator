@@ -20,12 +20,11 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
     /**
      * 查询分页数据
      *
-     * @param projectId 项目id
      * @param page      页码
      * @param pageCount 每页条数
      * @return JsonBean
      */
-    JsonBean findListByPage(Long projectId, Integer page, Integer pageCount);
+    JsonBean findListByPage(Integer page, Integer pageCount);
 
     /**
      * 添加
@@ -51,5 +50,12 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      */
     JsonBean updateData(${entity} ${entity?uncap_first});
 
+    /**
+     * id查询数据
+     *
+     * @param id id
+     * @return JsonBean
+     */
+    JsonBean findById(Long id);
 }
 </#if>

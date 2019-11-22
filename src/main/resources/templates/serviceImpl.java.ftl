@@ -28,7 +28,7 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
 
     @Override
-    public JsonBean findListByPage(Long projectId, Integer page, Integer pageCount){
+    public JsonBean findListByPage(Integer page, Integer pageCount){
         IPage<${entity}> wherePage = new Page<>(page, pageCount);
         ${entity} where = new ${entity}();
 
@@ -53,6 +53,12 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     public JsonBean updateData(${entity} ${entity?uncap_first}){
         baseMapper.updateById(${entity?uncap_first});
         return JsonBean.returnResponse();
+    }
+
+    @Override
+    public JsonBean findById(Long id){
+        ${entity} ${entity?uncap_first} = baseMapper.selectById(id);
+        return JsonBean.returnResponse(${entity?uncap_first});
     }
 }
 </#if>
