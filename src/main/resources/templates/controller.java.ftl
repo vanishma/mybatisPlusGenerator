@@ -43,7 +43,7 @@ import ${superControllerClassPackage};
     private ${table.serviceName} ${(table.serviceName?substring(1))?uncap_first};
 
 
-    @ApiOperation(value = "新增数据")
+    @ApiOperation(value = "新增${table.comment!}")
     @PostMapping()
     public JsonBean add(@RequestBody ${entity} ${entity?uncap_first}){
         try {
@@ -54,7 +54,7 @@ import ${superControllerClassPackage};
         }
     }
 
-    @ApiOperation(value = "删除数据")
+    @ApiOperation(value = "删除${table.comment!}")
     @DeleteMapping("{id}")
     public JsonBean delete(@PathVariable("id") Long id){
         try {
@@ -65,7 +65,7 @@ import ${superControllerClassPackage};
         }
     }
 
-    @ApiOperation(value = "更新数据")
+    @ApiOperation(value = "更新${table.comment!}")
     @PutMapping()
     public JsonBean update(@RequestBody ${entity} ${entity?uncap_first}){
         try {
@@ -76,7 +76,7 @@ import ${superControllerClassPackage};
         }
     }
 
-    @ApiOperation(value = "查询分页数据")
+    @ApiOperation(value = "查询${table.comment!}分页数据")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "page", value = "页码"),
         @ApiImplicitParam(name = "pageCount", value = "每页条数")
@@ -92,7 +92,7 @@ import ${superControllerClassPackage};
         }
     }
 
-    @ApiOperation(value = "id查询数据")
+    @ApiOperation(value = "id查询${table.comment!}")
     @GetMapping("{id}")
     public JsonBean findById(@PathVariable Long id){
         try {

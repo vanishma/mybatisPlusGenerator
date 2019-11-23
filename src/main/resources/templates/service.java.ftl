@@ -18,7 +18,7 @@ interface ${table.serviceName} : ${superServiceClass}<${entity}>
 public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
 
     /**
-     * 查询分页数据
+     * 查询${table.comment!}分页数据
      *
      * @param page      页码
      * @param pageCount 每页条数
@@ -27,15 +27,15 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
     JsonBean findListByPage(Integer page, Integer pageCount);
 
     /**
-     * 添加
+     * 添加${table.comment!}
      *
-     * @param ${entity?uncap_first} 信息
+     * @param ${entity?uncap_first} ${table.comment!}
      * @return JsonBean
      */
     JsonBean add(${entity} ${entity?uncap_first});
 
     /**
-     * 删除
+     * 删除${table.comment!}
      *
      * @param id 主键
      * @return JsonBean
@@ -43,9 +43,9 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
     JsonBean delete(Long id);
 
     /**
-     * 修改信息
+     * 修改${table.comment!}
      *
-     * @param ${entity?uncap_first} 信息
+     * @param ${entity?uncap_first} ${table.comment!}
      * @return JsonBean
      */
     JsonBean updateData(${entity} ${entity?uncap_first});
