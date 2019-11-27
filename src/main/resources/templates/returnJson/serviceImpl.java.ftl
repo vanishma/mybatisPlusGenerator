@@ -5,6 +5,8 @@ import ${package.Mapper}.${table.mapperName};
 import ${package.Service}.${table.serviceName};
 import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
+import com.maqh.demo.common.JsonBean;
+import com.maqh.demo.common.ReturnPageData;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -26,31 +28,37 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
 
     @Override
-    public  IPage<${entity}> findListByPage(Integer page, Integer pageCount){
+    public JsonBean findListByPage(Integer page, Integer pageCount){
         IPage<${entity}> wherePage = new Page<>(page, pageCount);
         ${entity} where = new ${entity}();
 
-        return   baseMapper.selectPage(wherePage, Wrappers.query(where));
+        IPage<${entity}> iPage = baseMapper.selectPage(wherePage, Wrappers.query(where));
+
+        return JsonBean.returnResponse(ReturnPageData.fillingData(iPage.getTotal(), iPage.getRecords()));
     }
 
     @Override
-    public int add(${entity} ${entity?uncap_first}){
-        return baseMapper.insert(${entity?uncap_first});
+    public JsonBean add(${entity} ${entity?uncap_first}){
+        baseMapper.insert(${entity?uncap_first});
+        return JsonBean.returnResponse();
     }
 
     @Override
-    public int delete(Long id){
-        return baseMapper.deleteById(id);
+    public JsonBean delete(Long id){
+        baseMapper.deleteById(id);
+        return JsonBean.returnResponse();
     }
 
     @Override
-    public int updateData(${entity} ${entity?uncap_first}){
-        return baseMapper.updateById(${entity?uncap_first});
+    public JsonBean updateData(${entity} ${entity?uncap_first}){
+        baseMapper.updateById(${entity?uncap_first});
+        return JsonBean.returnResponse();
     }
 
     @Override
-    public ${entity} findById(Long id){
-        return  baseMapper.selectById(id);
+    public JsonBean findById(Long id){
+        ${entity} ${entity?uncap_first} = baseMapper.selectById(id);
+        return JsonBean.returnResponse(${entity?uncap_first});
     }
 }
 </#if>

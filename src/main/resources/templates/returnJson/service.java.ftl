@@ -2,7 +2,7 @@ package ${package.Service};
 
 import ${package.Entity}.${entity};
 import ${superServiceClassPackage};
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.maqh.demo.common.JsonBean;
 
 /**
  * <p>
@@ -22,40 +22,40 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      *
      * @param page      页码
      * @param pageCount 每页条数
-     * @return IPage<${entity}>
+     * @return JsonBean
      */
-    IPage<${entity}> findListByPage(Integer page, Integer pageCount);
+    JsonBean findListByPage(Integer page, Integer pageCount);
 
     /**
      * 添加${table.comment!}
      *
      * @param ${entity?uncap_first} ${table.comment!}
-     * @return int
+     * @return JsonBean
      */
-    int add(${entity} ${entity?uncap_first});
+    JsonBean add(${entity} ${entity?uncap_first});
 
     /**
      * 删除${table.comment!}
      *
      * @param id 主键
-     * @return int
+     * @return JsonBean
      */
-    int delete(Long id);
+    JsonBean delete(Long id);
 
     /**
      * 修改${table.comment!}
      *
      * @param ${entity?uncap_first} ${table.comment!}
-     * @return int
+     * @return JsonBean
      */
-    int updateData(${entity} ${entity?uncap_first});
+    JsonBean updateData(${entity} ${entity?uncap_first});
 
     /**
      * id查询数据
      *
      * @param id id
-     * @return ${entity}
+     * @return JsonBean
      */
-    ${entity} findById(Long id);
+    JsonBean findById(Long id);
 }
 </#if>
