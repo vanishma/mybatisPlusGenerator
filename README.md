@@ -7,7 +7,9 @@ mybatisPlus 代码生成器 生成增删改查
 
 接口采用 restful 
 
-可以修改 /src/main/resources/templates/ 下的模版文件进行灵活配置, 实现自己想要的功能
+可以修改 /src/main/resources/templates/ 下的 Freemarker 模版文件进行灵活配置
+
+项目中的文件是生成 增删改查 功能的模版
 
 生成后增加请求路径就可以对单表进行  插入 修改 删除 分页查询等操作
 
